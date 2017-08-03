@@ -16,18 +16,32 @@ public class LiftTest {
     }
 
     @Test
-    public void goUpAndGetFloorReturnFloor2() throws Exception {
-
+    public void goUpAndGetFloor() throws Exception {
         lift.up();
         assertThat(lift.getFloor(), equalTo(2));
     }
 
     @Test
-    public void goUpUpAndGetFloorReturnFloor3() {
+    public void goUpUpAndGetFloor() {
         lift.up();
         lift.up();
         assertThat(lift.getFloor(), equalTo(3));
     }
 
+    @Test
+    public void goDownAndGetFloor() throws Exception {
+        lift.up().up();
+        lift.down();
 
+        assertThat(lift.getFloor(), equalTo(2));
+    }
+
+    @Test
+    public void goDownDownAndGetFloor() throws Exception {
+        lift.up().up();
+        lift.down().down();
+
+        assertThat(lift.getFloor(), equalTo(1));
+    }
 }
+
